@@ -95,8 +95,8 @@ def cooldown_time(message):
     now = datetime.now()
     user_data = user_gardens.get(user_id, {})
     last_used = user_data.get('last_used', datetime.min)
-    if now - last_used < timedelta(minutes=1):
-        next_time = last_used + timedelta(minutes=1)
+    if now - last_used < timedelta(hours=1):
+        next_time = last_used + timedelta(hours=1)
         wait_minutes = int((next_time - now).total_seconds() // 60)
         bot.send_message(message.chat.id, f"⏳ Чтобы посадить растение нужно подождать {wait_minutes} минут!")
     else:
